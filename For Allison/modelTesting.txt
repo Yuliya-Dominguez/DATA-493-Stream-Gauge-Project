@@ -1,0 +1,44 @@
+MODELS-	
+	ADA MODEL:
+		- Fastest and cheapest GPT-3 model.
+		- Good for simple text processing.
+	BABBAGE MODEL:
+		- Capable of straightforward tasks.
+		- Bit more expensive than ADA but still quite fast and cheap.
+	CURIE MODEL:
+		- Only slightly less powerful than the DAVINCI model, but still cheaper and faster.
+		- Can be used for advanced text processing.
+	DAVINCI MODEL:
+		- Very powerful language model.
+		- Can do the task very thoroughly.
+
+TESTING-
+	ADA MODEL: Unable to perform the task and produces no output.
+	BABBAGE MODEL: Unable to perform the task and produces no output.
+	CURIE MODEL: Unable to perform the task and produces no output.
+	DAVINCI MODEL: Performs tasks extremely well.
+FORMATTING-
+	CURRENT SETUP:
+		MODEL: davinci
+		max_tokens: 4
+		n: 1
+		temperature: 0.5
+	GAGE REMARK INPUT: Two small dams may cause slight regulation at times. Some small diversions for domestic use upstream from the station. Echo Lake conduit (station 11434500) diverts from Echo Lake (station 10336608), to South Fork American River Basin. 10/01/2013-09/30/2014: Records good except for estimated daily discharges, which are poor. 10/01/2014-09/30/2015: Records good except for estimated daily discharges, which are poor. 10/01/2015-09/30/2016: Records good except for estimated daily discharges, which are poor. 10/01/2016-09/30/2017: Records fair except for estimated daily discharges, which are poor. 10/01/2017-09/30/2018: Records fair except for estimated discharges, which are poor. 10/01/2018-09/30/2019: Records fair except for estimated discharges, which are poor. 10/01/2019-09/30/2020: Records fair except for estimated discharges, which are poor. 10/01/2020-09/30/2021: Records poor.
+	INPUT FORMATOR:
+		
+		QUESTION: From these human remarks about streambed gages, infer if there is a dam upstream from it in yes or no.
+		RESPONSE: YES.
+		COMMENTS: Very easy to interpret answer, can easily be turned into binary. This may cause issues with complicated data that aren't 100% certain.
+		
+		
+		QUESTION: From these human remarks about streambed gages, infer if there is a dam upstream from it, and give a confidence level as to that inference, respond with only that percentage.
+		RESPONSE: 54%.
+		COMMENTS: Gives a numerical value associated with the confidence of its assumption, which could be very useful in filtering data. However, it does not seem very confident in a gauge that is most definitely downstream of high levels of regulation.
+
+		QUESTION: From these human remarks about streambed gages, infer if there is a major flow regulation upstream from it, and give a confidence level as to that inference.
+		RESPONSE: 50%
+		COMMENTS: This resulted in an even lower confidence level, and should not be used.
+
+		QUESTION: From these remarks about stream bed gages, infer if there is flow regulation caused by upstream dams, reservoirs, storage reservoirs, or unnatural flow regulation. Diversions for irrigation are okay. Respond with only the inference in yes or no terms, and the confidence of that inference in percentage.
+		RESPONSE: Yes, there is flow regulation caused by upstream dams and diversions for domestic use. Confidence: 70%.
+		COMMENTS: This response is at much higher confidence, and contains all the criteria for non-valid stream gages.
